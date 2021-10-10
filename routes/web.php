@@ -15,16 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [CarroController::class, 'index'])->name('index');
 
-Route::get("/carros/captura", [CarroController::class, 'exibir'])->name('capturar-carros');
+Route::get("/carros/captura", [CarroController::class, 'capturar'])->name('capturar-carros');
 
 Route::get('/carros/lista', [CarroController::class, 'listar'])->name('lista-carros');
 
 Route::get('/carros/excluir{id}', [CarroController::class, 'excluir'])->name('excluir-carro');
-
 
 Route::get("/usuarios", [UsuarioController::class, 'exibirUsuarios'])->name("exibir-usuarios");
 

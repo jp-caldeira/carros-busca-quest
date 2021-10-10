@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Carro;
 use DOMDocument;
 use DOMXPath;
 
@@ -45,7 +46,7 @@ class EstoqueQuest
                 $carro['portas'] = trim($infos[9]->textContent);
                 $carro['cor'] = trim($infos[11]->textContent);
                 
-                //Carro::create($carro);
+                Carro::create($carro);
                 
             }
 

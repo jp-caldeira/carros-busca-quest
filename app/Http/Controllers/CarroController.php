@@ -18,6 +18,11 @@ class CarroController extends Controller
         $this->estoqueQuest = $estoqueQuest;
     }
 
+    public function index()
+    {
+        return view('index');
+    }
+
     public function listar()
     {
         $carros = Carro::get();
@@ -27,17 +32,22 @@ class CarroController extends Controller
         ]);
     }
 
-    public function exibir(Request $request){
+    public function capturar(Request $request){
 
         if(!is_null($request->termo)){
         
             $dados = $this->estoqueQuest->buscar($request->termo);
 
-            dd($dados);
+            $carros = Carro::get();
+
+            return view('listacarros', [ 
+                "dados" => $dados,
+                "carros" => $carros
+             ]);
 
         } else {
 
-            return redirect()->route('lista-carros');
+            return redirect()->route('index');
 
         }
     }

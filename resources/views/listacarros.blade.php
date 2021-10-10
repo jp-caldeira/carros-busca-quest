@@ -8,6 +8,17 @@
 </head>
 <body>
     <h1>Carros</h1>
+    <div>
+        @isset($dados['status'])
+           @if ($dados['status'] == 'success')
+               <p>Dados Cadastrados com sucesso!</p>
+               <p>Novos registros criados: {{ $dados['quantidade'] }}</p>
+           @else
+               <p>Não foi encontrado nenhum resultado para sua pesquisa</p>
+           @endif
+        @endisset
+
+    </div>
         <div>
         <p>Nova busca</p>
         @include('_form')
@@ -16,7 +27,7 @@
     <div>
         <h3> {{ $carro->nome_veiculo }}</h3>
         <p>Id: {{ $carro->id }}</p>
-        <p>Link: {{ $carro->link }}</p>        
+        <p>Link: {{ $carro->link }}</p>
         <p>Ano: {{ $carro->ano }}</p>
         <p>Combustível: {{ $carro->combustivel }}</p>
         <p>Portas: {{ $carro->portas }}</p>
