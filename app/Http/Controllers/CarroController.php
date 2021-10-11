@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Carro;
 use App\Services\EstoqueQuest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CarroController extends Controller
 {
@@ -18,21 +19,37 @@ class CarroController extends Controller
         $this->estoqueQuest = $estoqueQuest;
     }
 
-    public function index()
+    public function index()    
     {
-        return view('index');
+        if (Auth::check()){
+            return view('index');
+        } else {
+            return redirect()->route('login');
+        }
     }
 
     public function listar()
     {
-        $carros = Carro::get();
 
-        return view('listacarros', [
-            "carros" => $carros,
-        ]);
+        if (!Auth::check()) {        
+            return redirect()->route('login');
+        }
+
+         $carros = Carro::get();
+
+            return view('listacarros', [
+                "carros" => $carros,
+            ]);
+
+    
     }
 
-    public function capturar(Request $request){
+    public function capturar(Request $request)
+    {
+        if (!Auth::check()) {        
+            return redirect()->route('login');
+        }
+
 
         if(!is_null($request->termo)){
         
@@ -52,9 +69,12 @@ class CarroController extends Controller
         }
     }
 
-
     public function excluir(int $id)
     {
+        if (!Auth::check()) {        
+            return redirect()->route('login');
+        }
+
         $carro = Carro::findOrFail($id);
         
         $carro->delete();
