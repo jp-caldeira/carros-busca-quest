@@ -1,64 +1,45 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Projeto Estoque Quest Carros
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema que faz captura de dados de veículos do estoque de uma concessionária e salva as informações em um banco de dados.
 
-## About Laravel
+## Instruções
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. Clonar projeto
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+2. Executar o arquivo **quest-carros.sql** para criar o banco de dados e as tabelas. Você pode usar o MySQL Workbench, phpMyAdmin, HeidiSQL, etc.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+3. Renomeie o arquivo **.env.example** para **.env**
 
-## Learning Laravel
+4. Abra o arquivo .env e altere as variáveis DB_CONNECTION, DB_HOST, DB_PORT, DB_USERNAME, DB_PASSWORD conforme o necessário.
+   Ex:
+   DB_USERNAME=nome_do_usuario_do_banco_de_dados
+   DB_PASSWORD=senha_banco_de_dados
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+5. Instalação de dependências -->
+   Abra um terminal, acesse a pasta do projeto e digite:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+> composer install
 
-## Laravel Sponsors
+(caso não tenha o composer, baixe-o aqui https://getcomposer.org/download/)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+6. Ainda no terminal, e ainda dentro da pasta do projeto, digite:
 
-### Premium Partners
+> php artisan key:generate
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+7. Também no terminal, rode o servidor com o comando:
 
-## Contributing
+> php artisan serve
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+8. Uma mensagem como esta deverá aparecer no seu terminal:
 
-## Code of Conduct
+`Starting Laravel development server: http://127.0.0.1:8000 [Mon Oct 10 22:47:42 2021] PHP 7.4.14 Development Server (http://127.0.0.1:8000)`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Acesse o endereço (neste caso, http://127.0.0.1:8000) indicado através do seu navegador.
 
-## Security Vulnerabilities
+9. Acesse o sistema usando o email admin@admin.com e a senha admin.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### **ATENÇÃO**:
 
-## License
+Se você usa o anti-vírus Avast, é muito provável que ele vai achar que o arquivo server.php é uma ameaça e colocar ele em quarentena.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Caso isso ocorra, abra o Avast, acesse a aba Proteção e depois Quarentena. Selecione o server.php na lista, clique nos três pontinhos (Mais Opções) e escolha "Restaurar e adicionar exceção".

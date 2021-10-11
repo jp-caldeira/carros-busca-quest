@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Carro;
 use DOMDocument;
 use DOMXPath;
+use Illuminate\Support\Facades\Auth;
 
 class EstoqueQuest
 {
@@ -35,7 +36,7 @@ class EstoqueQuest
             foreach($elements as $element) {
 
                 $carro = [];
-                $carro['user_id'] = 1;
+                $carro['user_id'] = Auth::id();
                 $carro['nome_veiculo'] = $element->getElementsByTagName('h2')[0]->textContent;
                 $carro['link'] = $element->getElementsByTagName('a')[0]->getAttribute('href');
                 $infos = $element->getElementsByTagName('span');

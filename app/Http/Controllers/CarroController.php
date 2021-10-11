@@ -19,23 +19,13 @@ class CarroController extends Controller
         $this->estoqueQuest = $estoqueQuest;
     }
 
-    public function index()    
-    {
-        if (Auth::check()){
-            return view('index');
-        } else {
-            return redirect()->route('login');
-        }
-    }
-
     public function listar()
-    {
-
+    {   
         if (!Auth::check()) {        
             return redirect()->route('login');
         }
 
-         $carros = Carro::get();
+         $carros = Carro::get()->where('user_id', Auth::id());
 
             return view('listacarros', [
                 "carros" => $carros,
@@ -64,7 +54,7 @@ class CarroController extends Controller
 
         } else {
 
-            return redirect()->route('index');
+            return redirect()->route('lista-carros');
 
         }
     }

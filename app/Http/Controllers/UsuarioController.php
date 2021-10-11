@@ -20,6 +20,10 @@ class UsuarioController extends Controller
 
     public function exibirUsuarios()
     {
+        if (!Auth::check()) {        
+            return redirect()->route('login');
+        }
+
         $db = $this->connectDB();
 
         $query = $db->prepare('SELECT * FROM `users`');
